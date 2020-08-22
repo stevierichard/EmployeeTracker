@@ -27,7 +27,7 @@ function mainMenu() {
         "View departments",
         "View roles",
         "View employees",
-        "Update employee roles",
+        "exit",
       ],
     })
     .then(function (answer) {
@@ -56,7 +56,7 @@ function mainMenu() {
               },
             ])
             .then(function (roleAnswer) {
-              console.log(roleAnswer);
+              // console.log(roleAnswer);
               connection.query(
                 "INSERT INTO role SET ?",
 
@@ -101,9 +101,8 @@ function mainMenu() {
           });
           break;
 
-        case "Update employee roles":
-          updateEmployee();
-          break;
+        default:
+          return exit();
       }
     });
 }
@@ -147,9 +146,8 @@ function addEmployee() {
         message: "Enter employee role ID number",
       },
       {
-        //check this
         name: "manager_id",
-        type: "input",
+        type: "number",
         message: "Enter employee manager reference number",
       },
     ])
@@ -171,6 +169,11 @@ function addEmployee() {
       );
     });
 }
+
+const exit = () => {
+  console.log("Goodbye");
+  process.exit();
+};
 
 const viewDepartment = () => {
   return new Promise((resolve, reject) => {

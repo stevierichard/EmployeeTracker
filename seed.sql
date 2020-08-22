@@ -13,6 +13,7 @@ id INT NOT NULL AUTO_INCREMENT,
 title VARCHAR(30) NOT NULL,
 salary DECIMAL(10,4) NOT NULL,
 department_id INT NOT NULL,
+FOREIGN KEY (department_id) REFERENCES department(id) ON DELETE CASCADE,
 PRIMARY KEY (id)
 );
 
@@ -21,10 +22,11 @@ id INT NOT NULL AUTO_INCREMENT,
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
 role_id INT NOT NULL,
+FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE,
 manager_id INT,
+FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL,
 PRIMARY KEY (id)
 );
-
 
 INSERT INTO department(name)
 VALUES("account");
@@ -51,6 +53,8 @@ VALUES("steven","simon", 1, 1);
 
 INSERT INTO employee(first_name, last_name, role_id, manager_id)
 VALUES("richard","laizer", 2, 2);
+
+SELECT manager_id, first_name FROM employee INNER JOIN role ON department_id;
 
 SELECT * FROM department;
 SELECT * FROM role;
