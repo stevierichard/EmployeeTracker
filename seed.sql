@@ -45,7 +45,7 @@ INSERT INTO role(title, salary, department_id)
 VALUES("purchasing manager",2000.50,2);
 
 INSERT INTO role(title, salary, department_id)
-VALUES("marketing manager",2500.40,2);
+VALUES("marketing manager",2500.40,3);
 
 
 INSERT INTO employee(first_name, last_name, role_id, manager_id)
@@ -53,6 +53,9 @@ VALUES("steven","simon", 1, 1);
 
 INSERT INTO employee(first_name, last_name, role_id, manager_id)
 VALUES("richard","laizer", 2, 2);
+
+INSERT INTO employee(first_name, last_name, role_id, manager_id)
+VALUES("sharon","stone", 3, 3);
 
 SELECT manager_id, first_name FROM employee INNER JOIN role ON department_id;
 
